@@ -1,0 +1,54 @@
+execute as @e[type=interaction,tag=block_removal] run { fn_1
+    scoreboard players set $owner_exists temp 0
+    scoreboard players set $destroy_block temp 0
+    execute on passengers on origin if entity @s[type=player,tag=!linked] run { fn_2
+		scoreboard players set $owner_exists temp 1
+        tag @s add linked
+        execute store success score $destroy_block temp run advancement revoke @s only namespace:block_removal interact
+        execute anchored eyes positioned ^ ^ ^ summon marker run { fn_3
+            kill
+            scoreboard players set $steps temp 0
+            { fn_4
+                execute unless block ~ ~ ~ air run { fn_5
+                    tp @s ~ ~ ~
+                    data modify storage namespace:temp position set from entity @s Pos
+                }
+                scoreboard players add $steps temp 1
+                execute if score $steps temp matches ..224 if block ~ ~ ~ air positioned ^ ^ ^0.03125 run function namespace:fn_4
+            }
+        } 
+    }
+    execute if score $owner_exists temp matches 0 { fn_6
+        execute on passengers run kill
+        kill
+    }
+    execute if score $owner_exists temp matches 1 run { fn_7
+        execute if score $destroy_block temp matches 1 at @s run setblock ~ ~ ~ air
+        data modify entity @s Pos set from storage namespace:temp position
+        execute at @s align xyz run tp @s ~.5 ~-0.01 ~.5
+    }
+}
+
+execute as @a[tag=!linked] run { fn_8
+    data modify storage namespace:temp uuid set from entity @s UUID
+    advancement revoke @s only namespace:block_removal interact
+    execute at @s summon interaction run { fn_9
+        tag @s add block_removal
+        team join block_removal @s
+        data merge entity @s {CustomName:'{"text":"interaction"}',height:1.02,width:1.02}
+        tag @s add vehicle
+        execute summon area_effect_cloud run { fn_10
+            tag @s add block_removal
+            team join block_removal @s
+            data merge entity @s {CustomName:'{"text":"aec_link"}',Duration:2147483647}
+            data modify entity @s Owner set from storage namespace:temp uuid
+            ride @s mount @e[type=interaction,tag=vehicle,distance=..0.001,limit=1,sort=nearest]
+        }
+        tag @s remove vehicle
+    }
+}
+
+tag @a[tag=linked] remove linked
+
+# By dorkorc
+# For byjechu
