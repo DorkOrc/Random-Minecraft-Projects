@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "minecraft:block/white_stained_glass"
+  },
+  "overrides": [
+    { "predicate": {"custom_model_data": 1}, "model": "item/normal_arrow"},
+    { "predicate": {"custom_model_data": 2}, "model": "item/creeperhead"},
+    { "predicate": {"custom_model_data": 3}, "model": "item/playerhead"}
+  ]
+}
