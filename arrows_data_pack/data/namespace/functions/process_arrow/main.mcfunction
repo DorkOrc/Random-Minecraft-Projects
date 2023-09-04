@@ -12,7 +12,11 @@ execute unless data storage namespace:temp item if data storage namespace:temp o
 # check bow type
 scoreboard players set #arrow_type temp 1
 execute if data storage namespace:temp item.tag.display{Name:'{"text":"Creeper"}'} run scoreboard players set #arrow_type temp 2
-execute if data storage namespace:temp item.tag.display{Name:'{"text":"Player"}'} run scoreboard players set #arrow_type temp 3
+#execute if data storage namespace:temp item.tag.display{Name:'{"text":"Player"}'} run scoreboard players set #arrow_type temp 3
+
+data remove storage namespace:temp username
+data remove storage namespace:temp uuid
+data modify storage namespace:temp username set string storage namespace:temp item.tag.display.Name 9 -2
 
 tag @s add self
 execute at @s summon item_display run function namespace:process_arrow/init_arrow_tracker

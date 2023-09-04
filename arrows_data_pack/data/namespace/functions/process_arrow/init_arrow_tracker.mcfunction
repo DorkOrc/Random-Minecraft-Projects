@@ -1,5 +1,9 @@
 tag @s add arrow_tracker
 
+tag @s add arrow_tracker_new
+execute if score #arrow_type temp matches 1 if data storage namespace:temp username at @s summon item_display run function namespace:process_arrow/init_player_head
+tag @s remove arrow_tracker_new
+
 tp @s ~ ~ ~ 0 0
 
 data modify entity @s transformation.translation set value [0f,-0.5f,0f]
