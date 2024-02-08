@@ -1,0 +1,4 @@
+execute if score @s phantoms matches -3 store success score @s pandamium.optn.disable_phantoms unless score @s pandamium.optn.disable_phantoms matches 1
+execute if score @s phantoms matches -3 if score @s pandamium.optn.disable_phantoms matches 0 run tellraw @s [{"text":"","color":"green"},{"text":"[Phantoms]","color":"dark_green"}," Set option ",{"text":"Phantom Spawning","color":"aqua"}," to ",{"text":"On","bold":true,"color":"yellow"},"!"]
+execute if score @s phantoms matches -3 if score @s pandamium.optn.disable_phantoms matches 1 run tellraw @s [{"text":"","color":"green"},{"text":"[Phantoms]","color":"dark_green"}," Set option ",{"text":"Phantom Spawning","color":"aqua"}," to ",{"text":"Off","bold":true,"color":"yellow"},"!"]
+scoreboard players reset @s[scores={pandamium.optn.disable_phantoms=0}] pandamium.optn.disable_phantoms

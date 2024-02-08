@@ -1,0 +1,12 @@
+{
+	"pack": {
+		"pack_format": 15,
+		"description": [
+			"Personal Phantom Toggling",
+			{
+				"text": "\nPorted from Pandamium",
+				"color": "dark_gray"
+			}
+		]
+	}
+}
