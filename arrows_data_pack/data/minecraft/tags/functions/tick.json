@@ -1,6 +1,5 @@
 {
-    "replace": false,
-    "values": [
-      "namespace:tick"
-    ]
-  }
+	"values": [
+		"custom_arrows:tick"
+	]
+}

@@ -1,6 +1,5 @@
 {
-    "replace": false,
-    "values": [
-      "namespace:load"
-    ]
-  }
+	"values": [
+		"custom_arrows:load"
+	]
+}

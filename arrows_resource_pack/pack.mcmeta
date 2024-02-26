@@ -1,6 +1,6 @@
 {
-  "pack": {
-    "pack_format": 15,
-    "description": "ArrowHead"
-  }
+	"pack": {
+		"pack_format": 22,
+		"description": "Custom Arrows. Made for 1.20.4 by DorkOrc for pavitrprabhakar7824."
+	}
 }
